@@ -1,0 +1,64 @@
+Querry 1: All Restaurants
+{
+  restaurants{
+      id
+      name 
+  }
+}
+
+Querry 2: One Restaurant by ID
+{
+  restaurant(id:4){
+    id
+	name
+  }
+}
+
+Querry 3: Add a restaurant
+mutation setrestaurants {
+  setrestaurant(input: {
+    id: 4,
+    name: "BurgerMax",
+    description:
+      "Juicy stewed burgers seasoned with a special blend.",
+    dishes: [
+      {
+        name: "Volcano Burger",
+        price: 18,
+      },
+      {
+        name: "Volcano Burger with Fries ",
+        price: 22,
+      },
+      {
+        name: "Max Cheeseburger",
+        price: 16,
+      },
+      {
+        name: "Max Cheeseburger with Fries",
+        price: 20,
+      },
+    ],
+  },) {
+    id
+	name
+    dishes {
+      name
+      price
+    }
+  }
+}
+
+Querry 4: Delete a restaurant
+mutation deleterest($idd: Int = 4){
+  deleterestaurant(id: $idd){
+    ok
+  }
+}
+
+Querry 5: Update a restaurant
+mutation editrest($idd: Int = 3, $name: String = "BetterKarma"){
+  editrestaurant(id: $idd, name: $name){
+    name
+  }
+}
